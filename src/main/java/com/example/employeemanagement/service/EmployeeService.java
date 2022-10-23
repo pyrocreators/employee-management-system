@@ -4,6 +4,7 @@ import com.example.employeemanagement.entity.Employee;
 import com.example.employeemanagement.exception.EmployeeNotFoundException;
 import com.example.employeemanagement.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -36,7 +37,8 @@ public class EmployeeService {
         return employee;
     }
 
-    public void deleteEmployeeByid(Integer id){
+    @Secured(value = "ADMIN")
+    public void deleteEmployeeByid(Integer id) {
         employeeRepository.deleteById(id);
     }
 }

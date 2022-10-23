@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Employee list</title>
@@ -23,7 +24,7 @@
             <td th:text="${employee.firstname}"></td>
             <td th:text="${employee.lastname}"></td>
             <td th:text="${employee.email}"></td>
-            <td>
+            <td sec:authorize="hasRole('ADMIN')">
                 <a th:href="@{/employee/updateForm/{id}(id=${employee.id})}" class="btn btn-info btn-sm mb-4">Update</a>
                 <a th:href="@{/employee/deleteForm/{id}(id=${employee.id})}" class="btn btn-danger btn-sm mb-4">Delete</a>
             </td>
